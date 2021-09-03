@@ -169,7 +169,7 @@ public class TaskController {
      * @return
      */
     // 1-1 "/duplicate"に対してマッピングを行うアノテーションを記述する
-    @PostMapping("/duplicate")
+    @GetMapping("/duplicate")
     public String duplicate(TaskForm taskForm,
             // 1-2 Requestパラメータから"taskId"の名前でint idを取得するようにする
             @RequestParam("taskId") int id,

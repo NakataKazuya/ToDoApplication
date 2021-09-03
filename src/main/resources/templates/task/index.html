@@ -46,7 +46,7 @@
                     </td>
                     <!-- 1-4　複製ボタンを作成する -->
                     <td>
-                        <form method="POST" th:action="@{/task/duplicate}">
+                        <form method="GET" th:action="@{/task/duplicate}">
                             <input type="hidden" name="taskId" th:value="${obj.id}">
                             <input type="submit" value="複製">
                         </form>
