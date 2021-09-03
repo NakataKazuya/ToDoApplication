@@ -31,11 +31,7 @@ public class TaskForm {
     public TaskForm() {
     }
 
-    public TaskForm(int typeId,
-                    String title,
-                    String detail,
-                    LocalDateTime deadline,
-                    boolean newTask) {
+    public TaskForm(int typeId, String title, String detail, LocalDateTime deadline, boolean newTask) {
         this.typeId = typeId;
         this.title = title;
         this.detail = detail;
