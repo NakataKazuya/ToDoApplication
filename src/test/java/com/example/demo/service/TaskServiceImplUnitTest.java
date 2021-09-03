@@ -29,15 +29,15 @@ class TaskServiceImplUnitTest {
     @Mock // モック(stub)クラス ダミーオブジェクト
     private TaskDao dao;
 
-    @InjectMocks // テスト対象クラス　モックを探す newする
+    @InjectMocks // テスト対象クラス モックを探す newする
     private TaskServiceImpl taskServiceImpl;
 
     @Test // テストケース
     @DisplayName("テーブルtaskの全件取得で0件の場合のテスト")
-        // テスト名
+    // テスト名
     void testFindAllReturnEmptyList() {
 
-        //空のリスト
+        // 空のリスト
         List<Task> list = new ArrayList<>();
 
         // モッククラスのI/Oをセット（findAll()の型と異なる戻り値はNG）
@@ -56,10 +56,10 @@ class TaskServiceImplUnitTest {
 
     @Test // テストケース
     @DisplayName("テーブルTaskの全件取得で2件の場合のテスト")
-        // テスト名
+    // テスト名
     void testFindAllReturnList() {
 
-        //モックから返すListに2つのTaskオブジェクトをセット
+        // モックから返すListに2つのTaskオブジェクトをセット
         List<Task> list = new ArrayList<>();
         Task task1 = new Task();
         Task task2 = new Task();
@@ -82,13 +82,13 @@ class TaskServiceImplUnitTest {
 
     @Test // テストケース
     @DisplayName("タスクが取得できない場合のテスト")
-        // テスト名
+    // テスト名
     void testGetTaskThrowException() {
 
         // モッククラスのI/Oをセット
         when(dao.findById(0)).thenThrow(new EmptyResultDataAccessException(1));
 
-        //タスクが取得できないとTaskNotFoundExceptionが発生することを検査
+        // タスクが取得できないとTaskNotFoundExceptionが発生することを検査
         try {
             Optional<Task> task0 = taskServiceImpl.getTask(0);
         } catch (TaskNotFoundException e) {
@@ -99,10 +99,10 @@ class TaskServiceImplUnitTest {
 
     @Test // テストケース
     @DisplayName("タスクを1件取得した場合のテスト")
-        // テスト名
+    // テスト名
     void testGetTaskReturnOne() {
 
-        //Taskをデフォルト値でインスタンス化
+        // Taskをデフォルト値でインスタンス化
         Task task = new Task();
         Optional<Task> taskOpt = Optional.ofNullable(task);
 
@@ -115,20 +115,20 @@ class TaskServiceImplUnitTest {
         // モックの指定メソッドの実行回数を検査
         verify(dao, times(1)).findById(1);
 
-        //Taskが存在していることを確認
+        // Taskが存在していることを確認
         assertTrue(taskActual.isPresent());
 
     }
 
-    @Test // テストケース　ユニットテストではデータベースの例外は考えない
+    @Test // テストケース ユニットテストではデータベースの例外は考えない
     @DisplayName("削除対象が存在しない場合、例外が発生することを確認するテスト")
-        // テスト名
+    // テスト名
     void throwNotFoundException() {
 
         // モッククラスのI/Oをセット
         when(dao.deleteById(0)).thenReturn(0);
 
-        //削除対象が存在しない場合、例外が発生することを検査
+        // 削除対象が存在しない場合、例外が発生することを検査
         try {
             taskServiceImpl.deleteById(0);
         } catch (TaskNotFoundException e) {
