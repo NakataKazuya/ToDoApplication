@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 
 import com.example.demo.service.TaskNotFoundException;
 
-
 @ControllerAdvice
 public class WebMvcControllerAdvice {
 
@@ -18,11 +17,11 @@ public class WebMvcControllerAdvice {
         // 入力値の空文字をnullに変換
         dataBinder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
-    
-	@ExceptionHandler(TaskNotFoundException.class)
-	public String handleException(TaskNotFoundException e,Model model) {
-		model.addAttribute("message", e);
-		return "error/CustomPage";
-	}
-    
+
+    @ExceptionHandler(TaskNotFoundException.class)
+    public String handleException(TaskNotFoundException e, Model model) {
+        model.addAttribute("message", e);
+        return "error/CustomPage";
+    }
+
 }
