@@ -204,15 +204,16 @@ public class TaskController {
      * @return
      */
     // 2-4 "/selectType"に対してマッピングを行うアノテーションを記述する
+    @GetMapping("/selectType")
     public String selectType(TaskForm taskForm,
             // 2-5 Requestパラメータから"typeId"の名前でint idを取得するようにする
-            int id, Model model) {
+            @RequestParam("typeId") int id, Model model) {
 
         // 新規登録か更新かを判断する仕掛け
         taskForm.setNewTask(true);
 
         // 2-6 taskService.findByTypeを用いてTaskのリストを取得する
-        List<Task> list = null;
+        List<Task> list = taskService.findByType(id);
 
         model.addAttribute("list", list);
         model.addAttribute("title", "タスク一覧");
