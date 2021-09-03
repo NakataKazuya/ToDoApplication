@@ -32,7 +32,6 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-
     /**
      * タスクの一覧を表示します
      *
@@ -43,10 +42,10 @@ public class TaskController {
     @GetMapping
     public String task(TaskForm taskForm, Model model) {
 
-        //新規登録か更新かを判断する仕掛け
+        // 新規登録か更新かを判断する仕掛け
         taskForm.setNewTask(true);
 
-        //Taskのリストを取得する
+        // Taskのリストを取得する
         List<Task> list = taskService.findAll();
 
         model.addAttribute("list", list);
@@ -64,23 +63,14 @@ public class TaskController {
      * @return
      */
     @PostMapping("/insert")
-    public String insert(
-            @Valid @ModelAttribute TaskForm taskForm,
-            BindingResult result,
-            Model model) {
+    public String insert(@Valid @ModelAttribute TaskForm taskForm, BindingResult result, Model model) {
 
         if (!result.hasErrors()) {
 
-            //TaskFormのデータをTaskに格納
-//            Task task = new Task();
-//            task.setUserId(1);
-//            task.setTypeId(taskForm.getTypeId());
-//            task.setTitle(taskForm.getTitle());
-//            task.setDetail(taskForm.getDetail());
-//            task.setDeadline(taskForm.getDeadline());
+            // TaskFormのデータをTaskに格納
             Task task = makeTask(taskForm, 0);
 
-            //一件挿入後リダイレクト
+            // 一件挿入後リダイレクト
             taskService.insert(task);
 
             return "redirect:/task";
@@ -103,18 +93,15 @@ public class TaskController {
      * @return
      */
     @GetMapping("/{id}")
-    public String showUpdate(
-            TaskForm taskForm,
-            @PathVariable int id,
-            Model model) {
+    public String showUpdate(TaskForm taskForm, @PathVariable int id, Model model) {
 
-        //Taskを取得(Optionalでラップ)
+        // Taskを取得(Optionalでラップ)
         Optional<Task> taskOpt = taskService.getTask(id);
 
-        //TaskFormへの詰め直し
+        // TaskFormへの詰め直し
         Optional<TaskForm> taskFormOpt = taskOpt.map(t -> makeTaskForm(t));
 
-        //TaskFormがnullでなければ中身を取り出し
+        // TaskFormがnullでなければ中身を取り出し
         if (taskFormOpt.isPresent()) {
             taskForm = taskFormOpt.get();
         }
@@ -138,18 +125,14 @@ public class TaskController {
      * @return
      */
     @PostMapping("/update")
-    public String update(
-            @Valid @ModelAttribute TaskForm taskForm,
-            BindingResult result,
-            @RequestParam("taskId") int taskId,
-            Model model,
-            RedirectAttributes redirectAttributes) {
+    public String update(@Valid @ModelAttribute TaskForm taskForm, BindingResult result,
+            @RequestParam("taskId") int taskId, Model model, RedirectAttributes redirectAttributes) {
 
         if (!result.hasErrors()) {
-            //TaskFormのデータをTaskに格納
+            // TaskFormのデータをTaskに格納
             Task task = makeTask(taskForm, taskId);
 
-            //更新処理、フラッシュスコープの使用、リダイレクト（個々の編集ページ）
+            // 更新処理、フラッシュスコープの使用、リダイレクト（個々の編集ページ）
             taskService.update(task);
             redirectAttributes.addFlashAttribute("complete", "変更が完了しました");
 
@@ -169,11 +152,9 @@ public class TaskController {
      * @return
      */
     @PostMapping("/delete")
-    public String delete(
-            @RequestParam("taskId") int id,
-            Model model) {
+    public String delete(@RequestParam("taskId") int id, Model model) {
 
-        //タスクを一件削除しリダイレクト
+        // タスクを一件削除しリダイレクト
         taskService.deleteById(id);
 
         return "redirect:/task";
@@ -187,25 +168,23 @@ public class TaskController {
      * @param model
      * @return
      */
-    //1-1　"/duplicate"に対してマッピングを行うアノテーションを記述する
-    public String duplicate(
-            TaskForm taskForm,
-            //1-2　Requestパラメータから"taskId"の名前でint idを取得するようにする
-            int id,
-            Model model) {
+    // 1-1 "/duplicate"に対してマッピングを行うアノテーションを記述する
+    public String duplicate(TaskForm taskForm,
+            // 1-2 Requestパラメータから"taskId"の名前でint idを取得するようにする
+            int id, Model model) {
 
-        //1-3　taskService.getTaskを用いてTaskを取得する
+        // 1-3 taskService.getTaskを用いてTaskを取得する
         Optional<Task> taskOpt = null;
 
-        //TaskFormへの詰め直し
+        // TaskFormへの詰め直し
         Optional<TaskForm> taskFormOpt = taskOpt.map(t -> makeTaskForm(t));
 
-        //TaskFormがnullでなければ中身を取り出し
+        // TaskFormがnullでなければ中身を取り出し
         if (taskFormOpt.isPresent()) {
             taskForm = taskFormOpt.get();
         }
 
-        //新規登録のためNewTaskにtrueをセット
+        // 新規登録のためNewTaskにtrueをセット
         taskForm.setNewTask(true);
 
         model.addAttribute("taskForm", taskForm);
@@ -224,17 +203,15 @@ public class TaskController {
      * @param model
      * @return
      */
-    //2-4 "/selectType"に対してマッピングを行うアノテーションを記述する
-    public String selectType(
-            TaskForm taskForm,
-            //2-5 Requestパラメータから"typeId"の名前でint idを取得するようにする
-            int id,
-            Model model) {
+    // 2-4 "/selectType"に対してマッピングを行うアノテーションを記述する
+    public String selectType(TaskForm taskForm,
+            // 2-5 Requestパラメータから"typeId"の名前でint idを取得するようにする
+            int id, Model model) {
 
-        //新規登録か更新かを判断する仕掛け
+        // 新規登録か更新かを判断する仕掛け
         taskForm.setNewTask(true);
 
-        //2-6 taskService.findByTypeを用いてTaskのリストを取得する
+        // 2-6 taskService.findByTypeを用いてTaskのリストを取得する
         List<Task> list = null;
 
         model.addAttribute("list", list);
@@ -242,7 +219,6 @@ public class TaskController {
 
         return "task/index";
     }
-
 
     /**
      * TaskFormのデータをTaskに入れて返す
