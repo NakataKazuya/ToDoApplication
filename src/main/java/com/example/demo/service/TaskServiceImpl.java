@@ -63,6 +63,6 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<Task> findByType(int typeId) {
         // 2-3 typeIdを引数に指定してdaoのfindByType実行し、結果をreturnする
-        return null;
+        return dao.findByType(typeId);
     }
 }
