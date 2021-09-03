@@ -169,12 +169,14 @@ public class TaskController {
      * @return
      */
     // 1-1 "/duplicate"に対してマッピングを行うアノテーションを記述する
+    @PostMapping("/duplicate")
     public String duplicate(TaskForm taskForm,
             // 1-2 Requestパラメータから"taskId"の名前でint idを取得するようにする
-            int id, Model model) {
+            @RequestParam("taskId") int id,
+            Model model) {
 
         // 1-3 taskService.getTaskを用いてTaskを取得する
-        Optional<Task> taskOpt = null;
+        Optional<Task> taskOpt = taskService.getTask(id);
 
         // TaskFormへの詰め直し
         Optional<TaskForm> taskFormOpt = taskOpt.map(t -> makeTaskForm(t));
