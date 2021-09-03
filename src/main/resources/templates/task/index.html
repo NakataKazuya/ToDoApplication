@@ -30,7 +30,7 @@
             <input type="submit" value="送信">
         </form>
         <div th:if="${taskForm.newTask}" style="margin:10px">
-            <h3>タスク　編集削除</h3>
+            <h3>タスク　編集削除複製</h3>
             <table>
                 <tr th:each="obj : ${list}">
                     <td th:text="${obj.id}"></td>
