@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+/* common */
+html {
+  font-size: 100%;
+}
+body {
+  max-width: 1440px;
+  font-family: "Hiragino Kaku Gothic proN", "メイリオ", sans-serif;
+  line-height: 1.5;
+}
+main {
+  display: flex;
+}
+.taskForm h2,
+.taskList h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.form-select:hover {
+  cursor: pointer;
+}
+
+/* header */
+header {
+  height: 70px;
+  border-bottom: solid 2px #555;
+  padding: 10px 0;
+}
+h1 {
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* form */
+.taskForm {
+  width: 40%;
+  padding-top: 20px;
+}
+.taskForm form {
+  width: 80%;
+  margin: 0 auto;
+}
+.taskForm form p {
+  font-weight: bold;
+  margin-top: 20px;
+}
+.taskForm form div {
+  color: red;
+}
+.taskForm .submit {
+  display: block;
+  width: 400px;
+  margin: 40px auto 0;
+  padding: 10px 80px;
+}
+.taskForm .back {
+  display: block;
+  width: 400px;
+  margin: 20px auto 0;
+  padding: 0;
+}
+.taskForm .back a {
+  display: block;
+  color: #000;
+  font-weight: normal;
+  text-decoration: none;
+  margin: 0 auto;
+  padding: 10px 80px;
+}
+.complete {
+  text-align: center;
+  color: red;
+}
+
+/* list */
+.taskList {
+  width: 60%;
+  min-height: calc(100vh - 70px);
+  border-left: solid 2px #555;
+  padding-top: 20px;
+}
+.taskList table {
+  width: 95%;
+  margin: 0 auto;
+}
+.table tr {
+  text-align: center;
+}
+.taskData {
+  line-height: 2;
+  border-bottom: solid #000 1px;
+}
+.seleType {
+  width:150px;
+}
+.narrow {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.narrowSelect {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+.narrowSelect label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+.narrowSelect select {
+  margin-right: 20px;
+}
