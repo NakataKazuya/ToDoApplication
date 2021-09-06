@@ -49,7 +49,7 @@ public class TaskController {
         List<Task> list = taskService.findAll();
 
         model.addAttribute("list", list);
-        model.addAttribute("title", "タスク一覧");
+        model.addAttribute("title", "タスク登録<新規追加モード>");
 
         return "task/index";
     }
@@ -110,7 +110,7 @@ public class TaskController {
         List<Task> list = taskService.findAll();
         model.addAttribute("list", list);
         model.addAttribute("taskId", id);
-        model.addAttribute("title", "更新用フォーム");
+        model.addAttribute("title", "タスク登録<タスク更新モード>");
 
         return "task/index";
     }
@@ -139,7 +139,7 @@ public class TaskController {
             return "redirect:/task/" + taskId;
         } else {
             model.addAttribute("taskForm", taskForm);
-            model.addAttribute("title", "タスク一覧");
+            model.addAttribute("title", "タスク登録<新規追加モード>");
             return "task/index";
         }
     }
@@ -192,7 +192,7 @@ public class TaskController {
         model.addAttribute("taskForm", taskForm);
         List<Task> list = taskService.findAll();
         model.addAttribute("list", list);
-        model.addAttribute("title", "タスク一覧");
+        model.addAttribute("title", "タスク登録<新規追加モード>");
 
         return "task/index";
     }
@@ -218,7 +218,7 @@ public class TaskController {
         List<Task> list = taskService.findByType(id);
 
         model.addAttribute("list", list);
-        model.addAttribute("title", "タスク一覧");
+        model.addAttribute("title", "タスク登録<新規追加モード>");
 
         return "task/index";
     }
