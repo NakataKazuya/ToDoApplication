@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+/* common */
+html {
+  font-size: 100%;
+}
+body {
+  max-width: 1440px;
+  font-family: "Hiragino Kaku Gothic proN", "メイリオ", sans-serif;
+  line-height: 1.5;
+}
+
+/* header */
+header {
+  height: 70px;
+  border-bottom: solid 2px #555;
+  padding: 10px 0;
+}
+h1 {
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* form */
+main {
+  max-width: 50%;
+  margin: 20px auto;
+}
+form p {
+  font-weight: bold;
+  margin: 20px 0 5px;
+}
+.submit {
+  display: block;
+  width: 400px;
+  margin: 40px auto 0;
+  padding: 10px 80px;
+}
