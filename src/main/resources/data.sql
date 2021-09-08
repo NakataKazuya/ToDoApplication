@@ -8,7 +8,7 @@ INSERT INTO `task` VALUES
 (NULL,1,3,'サービスの自作','マイクロサービスを作ってみる','2020-09-13 17:00:00');
 
 INSERT INTO `user` VALUES
-(NULL, 'ユーザー1', 'user1@example.com', 'pass1', '1', 'USER'),
-(NULL, 'ユーザー2', 'user2@example.com', 'pass2', '0', 'USER'),
-(NULL, 'ユーザー3', 'user3@example.com', 'pass3', '1', 'USER'),
-(NULL, 'ユーザー4', 'user4@example.com', 'pass4', '1', 'ADMIN');
+(NULL, 'ユーザー1', 'user1@example.com', 'password1', 1, 'USER'),
+(NULL, 'ユーザー2', 'user2@example.com', 'password2', 0, 'USER'),
+(NULL, 'ユーザー3', 'user3@example.com', 'password3', 1, 'USER'),
+(NULL, 'ユーザー4', 'user4@example.com', 'password4', 1, 'ADMIN');
