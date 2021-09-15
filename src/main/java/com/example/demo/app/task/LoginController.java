@@ -29,24 +29,24 @@ public class LoginController {
 
         return "login";
     }
-
-    @PostMapping
-    String postLogin(@Valid @ModelAttribute LoginForm loginForm,
-                     BindingResult result,
-                     Model model) {
-        if (!result.hasErrors()) {
-            User user = new User();
-            user.setUsername(loginForm.getUsername());
-            user.setPassword(loginForm.getPassword());
-            user.setEmail("null");
-            user.setEnabled(true);
-            user.setAuthority("USER");
-            userService.loadUserByUsername(user);
-            return "redirect:/task";
-        } else {
-            model.addAttribute("loginForm", loginForm);
-            model.addAttribute("title", "ログイン");
-            return "/login";
-        }
-    }
+//
+//    @PostMapping
+//    String postLogin(@Valid @ModelAttribute LoginForm loginForm,
+//                     BindingResult result,
+//                     Model model) {
+//        if (!result.hasErrors()) {
+//            User user = new User();
+//            user.setUsername(loginForm.getUsername());
+//            user.setPassword(loginForm.getPassword());
+//            user.setEmail("null");
+//            user.setEnabled(true);
+//            user.setAuthority("USER");
+//            userService.loadUserByUsername(user);
+//            return "redirect:/task";
+//        } else {
+//            model.addAttribute("loginForm", loginForm);
+//            model.addAttribute("title", "ログイン");
+//            return "/login";
+//        }
+//    }
 }
