@@ -4,7 +4,6 @@ import com.example.demo.entity.User;
 
 import java.util.Optional;
 
-public interface UserDao {
-  int insert(User user);
-  Optional<User> findUser(User user);
+public interface IUserAccountDao {
+    Optional<User> findUser(String username);
 }
