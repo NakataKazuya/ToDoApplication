@@ -15,7 +15,10 @@
     </header>
 
     <main>
-        <form method="POST" th:action="@{/login}" th:object="${loginForm}">
+        <form method="POST" th:action="@{/loginpass}" th:object="${loginForm}">
+            <div th:if="${param.error}">
+                <p class="text-danger">ユーザー名またはパスワードが間違っています</p>
+            </div>
             <p>
                 <label for="inputUsername">ユーザー名</label>
             </p>
